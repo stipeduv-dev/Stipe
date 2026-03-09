@@ -18,8 +18,8 @@ def hole_finanz_daten():
     spy_aktuell = hist_spy['Close'].iloc[-1]
     
     # Live Wechselkurse
-    usd_eur = yf.Ticker("EURUSD=X").history(period="1d")['Close'].iloc[-1]
-    hkd_eur = yf.Ticker("EURHKD=X").history(period="1d")['Close'].iloc[-1]
+    usd_eur_rate = yf.Ticker("EURUSD=X").history(period="1d")['Close'].iloc[-1]
+    hkd_eur_rate = yf.Ticker("EURHKD=X").history(period="1d")['Close'].iloc[-1]
     
     return spy_aktuell, spy_sma200, usd_eur, hkd_eur
 
@@ -121,4 +121,5 @@ else:
 st.markdown("---")
 fig_bar = px.bar(df, x='Ticker', y='P&L%', color='P&L%', title="Relative Performance der Positionen",
                   color_continuous_scale='RdYlGn', range_color=[-20, 20])
+
 st.plotly_chart(fig_bar, use_container_width=True)
