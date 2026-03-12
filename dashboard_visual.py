@@ -21,7 +21,7 @@ def hole_finanz_daten():
     usd_eur_rate = yf.Ticker("EURUSD=X").history(period="1d")['Close'].iloc[-1]
     hkd_eur_rate = yf.Ticker("EURHKD=X").history(period="1d")['Close'].iloc[-1]
     
-    return spy_aktuell, spy_sma200, usd_eur, hkd_eur
+    return spy_aktuell, spy_sma200, usd_eur_rate, hkd_eur_rate
 
 try:
     spy_preis, spy_sma200, eur_usd_rate, eur_hkd_rate = hole_finanz_daten()
@@ -123,3 +123,4 @@ fig_bar = px.bar(df, x='Ticker', y='P&L%', color='P&L%', title="Relative Perform
                   color_continuous_scale='RdYlGn', range_color=[-20, 20])
 
 st.plotly_chart(fig_bar, use_container_width=True)
+
